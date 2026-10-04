@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Store</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">ShopZone</div>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+            >
+            <button onclick="searchProducts()">Search</button>
+        </div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+            <a href="#">Cart</a>
+        </div>
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+            <h1>Welcome to ShopZone</h1>
+            <p>Find the products you love.</p>
+            <button>Shop Now</button>
+        </section>
+
+        <section class="register-section">
+
+    <h2>Create Your Account</h2>
+
+    <form id="registerForm">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Full Name"
+            required
+        >
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Email Address"
+            required
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+        >
+
+        <button type="submit">Register</button>
+
+      </form>
+
+         <p id="registerMessage"></p>
+
+   </section>
+   <section class="login-section">
+
+    <h2>Login</h2>
+
+    <form id="loginForm">
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Email Address"
+            required
+        >
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+            required
+        >
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <p id="loginMessage"></p>
+
+</section>
+
+
+        <section class="products">
+
+            <h2>Featured Products</h2>
+
+            <div class="product-container" id="productContainer">
+                    <p>Loading products...</p>
+            </div>
+
+
+                <div class="product-card">
+                    <div class="product-image">📱</div>
+                    <h3>Smartphone</h3>
+                    <p>Latest smartphone</p>
+                    <strong>₹25,000</strong>
+                    <button>Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">💻</div>
+                    <h3>Laptop</h3>
+                    <p>Powerful laptop</p>
+                    <strong>₹55,000</strong>
+                    <button>Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🎧</div>
+                    <h3>Headphones</h3>
+                    <p>Wireless headphones</p>
+                    <strong>₹3,000</strong>
+                    <button>Add to Cart</button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>© 2026 ShopZone</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
