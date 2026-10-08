@@ -5,19 +5,50 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo 'GitHub code checkout successful'
+                checkout scm
             }
         }
 
-        stage('Build') {
+        stage('SonarQube Analysis') {
             steps {
-                echo 'Building E-Commerce application'
+                withSonarQubeEnv('SonarQube') {
+                    sh '''
+                        sonar-scanner \
+                          -Dsonar.projectKey=e-commerce-project \
+                          -Dsonar.projectName=E-Commerce-Project \
+                          -Dsonar.sources=frontend,backend \
+                          -Dsonar.exclusions=**/node_modules/**,**/*.min.js
+                    '''
+                }
             }
         }
 
-        stage('Test') {
+        stage('Quality Gate') {
             steps {
-                echo 'Testing application'
+                timeout(time: 5, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker compose build'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'docker compose up -d'
+            }
+        }
+
+        stage('Health Check') {
+            steps {
+                sh '''
+                    sleep 10
+                    curl -f http://localhost:8080/api/health
+                '''
             }
         }
     }
