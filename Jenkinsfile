@@ -18,7 +18,7 @@ pipeline {
                 withSonarQubeEnv('SonarQube') {
                     sh '''
                         $SONAR_SCANNER_HOME/bin/sonar-scanner \
-                          -Dsonar.projectKey=e-commerce-project \
+                          -Dsonar.projectKey=E-Commerce-Project \
                           -Dsonar.projectName=E-Commerce-Project \
                           -Dsonar.sources=frontend,backend \
                           -Dsonar.exclusions=**/node_modules/**,**/*.min.js
